@@ -1,0 +1,97 @@
+.combos {
+    background-color: var(--color-off-white);
+}
+
+.combos__main-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    letter-spacing: 5px;
+}
+
+.combos__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.combo-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-medium);
+    text-align: center;
+}
+
+.combo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.combo-card__image {
+    width: 150px;
+    height: 150px;
+    margin: var(--space-lg) auto 0;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 3px solid var(--color-gold-light);
+}
+
+.combo-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.combo-card__content {
+    padding: var(--space-lg);
+}
+
+.combo-card__name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-brown);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+}
+
+.combo-card__features {
+    text-align: left;
+    margin-bottom: var(--space-md);
+}
+
+.combo-card__features li {
+    font-size: 0.875rem;
+    color: var(--color-dark-gray);
+    line-height: 1.8;
+    margin-bottom: var(--space-xs);
+}
+
+.combo-card__note {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--color-dark-gray);
+    margin-bottom: var(--space-md);
+}
+
+.combo-card__price {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-brown);
+}
+
+.combos__cta {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+    .combos__grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+}
