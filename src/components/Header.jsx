@@ -13,6 +13,18 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Prevent body scroll when menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isMobileMenuOpen])
+
     const navLinks = [
         { href: '#inicio', label: 'Inicio' },
         { href: '#sobre-mi', label: 'Sobre Mí' },
@@ -29,7 +41,27 @@ const Header = () => {
                         <span className="nav__logo-text">Auto Amor & Relax</span>
                     </a>
 
+                    {/* Mobile menu overlay */}
+                    {isMobileMenuOpen && (
+                        <div
+                            className="nav__overlay"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        />
+                    )}
+
                     <ul className={`nav__links ${isMobileMenuOpen ? 'nav__links--open' : ''}`}>
+                        {/* Close button inside menu */}
+                        <button
+                            className="nav__close"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-label="Cerrar menú"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+
                         {navLinks.map((link) => (
                             <li key={link.href}>
                                 <a
@@ -46,9 +78,9 @@ const Header = () => {
                     <button
                         className="nav__toggle"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Toggle menu"
+                        aria-label="Abrir menú"
                     >
-                        <span className={`nav__toggle-bar ${isMobileMenuOpen ? 'nav__toggle-bar--open' : ''}`}></span>
+                        <span className="nav__toggle-bar"></span>
                     </button>
                 </nav>
             </div>
